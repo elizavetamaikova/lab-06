@@ -47,7 +47,7 @@ find_package(Boost CONFIG REQUIRED log thread system)
 hunter_add_package(nlohmann_json)
 find_package(nlohmann_json CONFIG REQUIRED)
 add_library(${PROJECT_NAME} STATIC
-        sources/source.cpp)
+        sources/Worker.cpp)
 
 add_executable(demo
         ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp
