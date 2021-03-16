@@ -4,7 +4,7 @@
 //Copyright 2021 <elizavetamaikova>
 
 #ifndef INCLUDE_WORKER_HPP_
-#define THREADING_WORKER_HPP
+#define INCLUDE_WORKER_HPP_
 
 #include <iostream>
 #include <vector>
