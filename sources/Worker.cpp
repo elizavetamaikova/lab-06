@@ -1,6 +1,8 @@
 //
 // Created by lizer on 14.03.2021.
 //
+//Copyright 2001 <elizavetamaikova>
+
 #include <Worker.hpp>
 
 namespace logging = boost::log;
@@ -51,7 +53,7 @@ void Worker::HashFinder()
 {
   auto start = std::chrono::high_resolution_clock::now();
   auto finish = std::chrono::high_resolution_clock::now();
-  while(_work)
+  while (_work)
   {
     std::string data = std::to_string(std::rand());
     std::string hash = picosha2::hash256_hex_string(data);
@@ -67,7 +69,7 @@ void Worker::HashFinder()
         js["time"] = std::chrono::duration_cast<std::chrono::microseconds>
             (finish - start).count();
         start = std::chrono::high_resolution_clock::now();
-        if (lock.try_lock_for(std::chrono::milliseconds (100))) {
+        if (lock.try_lock_for(std::chrono::milliseconds(100))) {
           _result.push_back(js);
           lock.unlock();
         }
@@ -79,17 +81,17 @@ void Worker::HashFinder()
       BOOST_LOG_TRIVIAL(trace) << " data: " << data << " hash: " << hash
                                << " id: " << std::this_thread::get_id();
     }
-
   }
 }
 
 
 void Worker::LoggingInit()
 {
-  logging::add_console_log(std::cout,
-                           keywords::format = "[%TimeStamp%] [%Severity%] %Message%",
-                           keywords::auto_flush = true,
-                           keywords::filter = logging::trivial::severity == logging::trivial::info);
+  logging::add_console_log(
+      std::cout,
+      keywords::format = "[%TimeStamp%] [%Severity%] %Message%",
+      keywords::auto_flush = true,
+      keywords::filter = logging::trivial::severity == logging::trivial::info);
 
   typedef sinks::synchronous_sink<sinks::text_file_backend> file_sink;
   boost::shared_ptr<file_sink> sink(new file_sink(

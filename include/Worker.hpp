@@ -1,8 +1,9 @@
 //
 // Created by lizer on 14.03.2021.
 //
+//Copyright 2021 <elizavetamaikova>
 
-#ifndef THREADING_WORKER_HPP
+#ifndef INCLUDE_WORKER_HPP_
 #define THREADING_WORKER_HPP
 
 #include <iostream>
@@ -49,4 +50,4 @@ class Worker
 };
 
 
-#endif  // THREADING_WORKER_HPP
+#endif  // INCLUDE_WORKER_HPP_
